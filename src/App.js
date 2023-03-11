@@ -2,7 +2,6 @@ import React from "react";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavRoutes from "./Navroutes";
-import EditEvent from "./pages/EditEvent";
 import PortalWrapper from "./pages/PortalWrapper";
 import "./styles/tailwind.output.css";
 

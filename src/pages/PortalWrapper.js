@@ -38,10 +38,10 @@ const NavItem = ({ title, href, icon }) => {
   return (
     <Link
       to={href}
-      className="shadow-xl aspect-video h-36 rounded-xl border-[4px] hover:bg-teal-500 hover:bg-opacity-10  border-teal-400 group "
+      className="shadow-xl aspect-video h-32 rounded-xl border-[4px] hover:bg-teal-500 hover:bg-opacity-10  border-teal-400 group "
     >
       <div className="w-full h-full relative p-4 [clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)]">
-        <h1 className="text-2xl text-teal-600 font-semibold w-[60%]">
+        <h1 className="text-2xl [line-height:1.75rem] text-teal-600 font-semibold w-[60%] ">
           {title}
         </h1>
         {React.cloneElement(icon, {
