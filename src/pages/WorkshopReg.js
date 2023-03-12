@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import Row from "../components/Row";
 import Inputfield from "../components/TextInput";
 
-const EditEvent = () => {
+const WorkshopReg = () => {
   const [events, setEvents] = useState([]);
   const [eventChoice, setEventChoice] = useState("");
 
@@ -58,7 +58,7 @@ const EditEvent = () => {
   }, [eventChoice]);
 
   return (
-    <Layout title={"Edit Event"}>
+    <Layout title={"Workshop Registrations"}>
       <Dropdown
         title="Choose an event to edit"
         options={events.map((e) => e.eventName)}
@@ -105,4 +105,4 @@ const EditEvent = () => {
   );
 };
 
-export default EditEvent;
+export default WorkshopReg;
