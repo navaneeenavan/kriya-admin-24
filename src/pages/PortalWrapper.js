@@ -1,11 +1,17 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import NavRoutes from "../Navroutes";
 
 const PortalWrapper = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
+
   return (
     <section className="w-screen lg:h-screen overflow-y-auto flex font-poppins">
-      <div className="hidden lg:block lg:w-1/2 bg-teal-100 px-[calc(100vw/12)] lg:px-[calc(100vw/24)] py-8 shadow-xl relative z-10">
+      <div className={`${location.pathname === "/" ? "w-full" : "hidden lg:block"} lg:w-1/2 bg-teal-100 px-[calc(100vw/12)] lg:px-[calc(100vw/24)] py-8 shadow-xl relative z-10`}>
         <div className="flex justify-between items-center">
           <div
             className="w-24 lg:w-36 h-24 lg:h-36 aspect-square"
@@ -19,13 +25,13 @@ const PortalWrapper = () => {
             Admin Dashboard
           </h1>
         </div>
-        <div className="flex flex-wrap gap-6 mt-12 justify-center">
+        <div className="flex flex-wrap gap-6 mt-12 mb-12 lg:mb-0 justify-center">
           {NavRoutes.map((nav) => (
             <NavItem title={nav.title} icon={nav.icon} href={nav.href} />
           ))}
         </div>
       </div>
-      <main className="w-full lg:w-1/2 bg-gray-100 h-screen">
+      <main className={`${location.pathname === "/" ? "hidden lg:block" : "w-full"} lg:w-1/2 bg-gray-100 h-screen`}>
         <Outlet />
       </main>
     </section>
