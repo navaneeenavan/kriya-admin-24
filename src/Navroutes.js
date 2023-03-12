@@ -4,6 +4,7 @@ import { TfiStatsUp } from "react-icons/tfi";
 import { IoTrophyOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BiHome } from "react-icons/bi";
+import { BsBuildings } from "react-icons/bs";
 import EditWebsite from "./pages/EditWebsite";
 import EventReg from "./pages/EventReg";
 import PaperReg from "./pages/PaperReg";
@@ -12,6 +13,7 @@ import WorkshopReg from "./pages/WorkshopReg";
 import Accommodation from "./pages/Accommodation";
 import OnSpotRegistration from "./pages/OnSpotRegistration";
 import Statistics from "./pages/Statistics";
+import CollegeUsers from "./pages/CollegeUsers";
 
 const NavRoutes = [
   {
@@ -25,6 +27,12 @@ const NavRoutes = [
     icon: <TfiStatsUp />,
     href: "/statistics",
     element: <Statistics />,
+  },
+  {
+    title: "College Wise Users",
+    icon: <BsBuildings />,
+    href: "/college-users",
+    element: <CollegeUsers />,
   },
   // {
   //   title: "Edit Website Content",

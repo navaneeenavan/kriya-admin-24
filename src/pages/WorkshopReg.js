@@ -53,19 +53,33 @@ const WorkshopReg = () => {
         </button>
       </div>
       <div className="space-y-4 px-4 lg:px-0">
+        <div className="flex flex-row items-center">
+          <div className="text-xs mr-6 lg:mr-4 w-[5%]">S.No.</div>
+          <div className="w-1/2">
+            <p className="text-xs">Workshop ID</p>
+            <p className="text-xs">Workshop Name</p>
+          </div>
+          <div className="text-xs text-center w-[15%]">Total Reg.</div>
+          <div className="text-xs text-center w-[15%]">PSG Reg.</div>
+          <div className="text-xs text-center w-[15%]">Non PSG Reg.</div>
+        </div>
+        <div className="border-b border-2 border-[#303030]"></div>
+
         {workStats?.map((w, index) => (
           <div>
             <div className="flex items-center">
-              <div className="text-xl mr-4 lg:mr-2 w-[5%]">{index + 1}</div>
-              <div className="w-[70%] lg:w-3/4">
+              <div className="text-xl mr-6 lg:mr-4 w-[5%]">{index + 1}</div>
+              <div className="w-1/2">
                 <p className="text-xs">{w._id}</p>
                 <p className="">
                   {workshops.find((work) => w._id === work.wid).workName}
                 </p>
               </div>
-              <div className="text-3xl lg:text-4xl text-right font-semibold w-[20%] lg:w-[5%]">{w.count}</div>
+              <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.count}</div>
+              <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.psgCount}</div>
+              <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.count - w.psgCount}</div>
             </div>
-            <div className="w-full lg:w-[90%] h-[1px]  bg-gray-500 my-2"></div>
+            <div className="w-full h-[1px] bg-gray-500 my-2"></div>
           </div>
         ))}
       </div>
