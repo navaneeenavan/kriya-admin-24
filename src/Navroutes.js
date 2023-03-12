@@ -1,4 +1,3 @@
-import { BsBarChartLine, BsCalendarEventFill } from "react-icons/bs";
 import { FiUserPlus } from "react-icons/fi";
 import { HiOutlineSpeakerphone, HiOutlinePresentationChartBar } from "react-icons/hi";
 import { TfiStatsUp } from "react-icons/tfi";
@@ -9,32 +8,30 @@ import EditWebsite from "./pages/EditWebsite";
 import EventReg from "./pages/EventReg";
 import PaperReg from "./pages/PaperReg";
 import ReferralLeaderboard from "./pages/ReferralLeaderboard";
-import Stats from "./pages/Stats";
 import WorkshopReg from "./pages/WorkshopReg";
 import Accommodation from "./pages/Accommodation";
-import OnSpot from "./pages/OnSpot";
 import OnSpotRegistration from "./pages/OnSpotRegistration";
 import Statistics from "./pages/Statistics";
 
 const NavRoutes = [
   {
-    title: "Statistics",
-    icon: <TfiStatsUp />,
-    href: "/statistics",
-    element: <Stats />,
-  },
-  {
     title: "Register On Spot",
     icon: <FiUserPlus />,
     href: "/register-on-spot",
-    element: <OnSpot />,
+    element: <OnSpotRegistration />,
   },
   {
-    title: "Edit Website Content",
-    icon: <BsCalendarEventFill />,
-    href: "/edit-website",
-    element: <EditWebsite />,
+    title: "Statistics",
+    icon: <TfiStatsUp />,
+    href: "/statistics",
+    element: <Statistics />,
   },
+  // {
+  //   title: "Edit Website Content",
+  //   icon: <BsCalendarEventFill />,
+  //   href: "/edit-website",
+  //   element: <EditWebsite />,
+  // },
   {
     title: "Referral Leaderboard",
     icon: <HiOutlineSpeakerphone />,
@@ -64,18 +61,6 @@ const NavRoutes = [
     icon: <BiHome />,
     href: "/accommodation",
     element: <Accommodation />,
-  },
-  {
-    title: "Register On Spot",
-    icon: <FiUserPlus />,
-    href: "/register-on-spot",
-    element: <OnSpotRegistration />,
-  },
-  {
-    title: "Statistics",
-    icon: <BsBarChartLine />,
-    href: "/statistics",
-    element: <Statistics />,
   },
 ];
 

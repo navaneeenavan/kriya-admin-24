@@ -11,13 +11,12 @@ const PortalWrapper = () => {
           <div
             className="w-36 h-36 aspect-square"
             style={{
-              background:
-                "url(https://res.cloudinary.com/dksmk66vo/image/upload/v1677849228/Kriya_KLA_Logo_Final_qbhzt5.png",
+              background: "url(/assets/Kriya_KLA_Logo_Final.png)",
               backgroundPosition: "center",
               backgroundSize: "cover",
             }}
           ></div>
-          <h1 className="text-5xl font-semibold text-teal-500 w-[40%] text-right">
+          <h1 className="text-3xl font-semibold text-teal-500 w-[40%] text-right">
             Admin Dashboard
           </h1>
         </div>
@@ -41,7 +40,7 @@ const NavItem = ({ title, href, icon }) => {
       className="shadow-xl aspect-video h-32 rounded-xl border-[4px] hover:bg-teal-500 hover:bg-opacity-10  border-teal-400 group "
     >
       <div className="w-full h-full relative p-4 [clip-path:polygon(0%_0%,100%_0%,100%_100%,0%_100%)]">
-        <h1 className="text-2xl [line-height:1.75rem] text-teal-600 font-semibold w-[60%] ">
+        <h1 className="text-xl [line-height:1.75rem] text-teal-600 font-semibold w-[60%] ">
           {title}
         </h1>
         {React.cloneElement(icon, {

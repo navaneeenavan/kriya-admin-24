@@ -1,106 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { fetchEvents } from "../API/calls";
-import Dropdown from "../components/Dropdown";
+import { fetchAccommodationDetails } from "../API/calls";
 import Layout from "../components/Layout";
-import Row from "../components/Row";
-import Inputfield from "../components/TextInput";
 
 const Accommodation = () => {
-  const [events, setEvents] = useState([]);
-  const [eventChoice, setEventChoice] = useState("");
-
-  const [formData, setFormData] = useState({
-    eventName: "",
-    category: "",
-    one_line_desc: "",
-    description: "",
-    round_title_1: "",
-    round_desc_1: "",
-    round_title_2: "",
-    round_desc_2: "",
-    round_title_3: "",
-    round_desc_3: "",
-    round_title_4: "",
-    round_desc_4: "",
-    eventId: "",
-    contact_name_1: "",
-    contact_mobile_1: "",
-    contact_name_2: "",
-    contact_mobile_2: "",
-    hall: "",
-    eventRules: "",
-    teamSize: "",
-    date: "",
-    timing: "",
-  });
+  const [accommodation, setAccommodation] = useState(null);
+  const [college, setCollege] = useState(false)
 
   useEffect(() => {
-    toast.promise(fetchEvents(), {
-      loading: "Fetching events",
+    toast.promise(fetchAccommodationDetails(), {
+      loading: "Loading accommodation details...",
       success: (res) => {
-        setEvents(res.data.events);
-        return "Successfully fetched events";
+        setAccommodation(res.data.accommodationDetails);
+        return "Accommodation details loaded";
       },
       error: (err) => {
         console.log(err);
-        return "Error fetching events";
+        return "Error loading accommodation details";
       },
     });
   }, []);
 
-  useEffect(() => {
-    if (eventChoice.length <= 0) return;
-    setFormData({
-      ...formData,
-      ...events.find((e) => e.eventName === eventChoice),
-    });
-  }, [eventChoice]);
-
   return (
-    <Layout title={"Accommodation Registrations"}>
-      <Dropdown
-        title="Choose an event to edit"
-        options={events.map((e) => e.eventName)}
-        valueState={[eventChoice, setEventChoice]}
-        placeholder="Select an event"
-      />
-      <div className="w-full my-8 h-1 border-b-2 border-b-gray-200" />
-      {eventChoice.length <= 0 ? (
-        <div className="w-full font-semibold text-5xl text-gray-300 p-16 flex items-center justify-center">
-          Select an event to edit
-        </div>
-      ) : (
-        <div className="w-full h-fit space-y-6">
-          <Row>
-            <Inputfield
-              title="Event Name"
-              valueState={[
-                formData.eventName,
-                (val) => setFormData({ ...formData, eventName: val }),
-              ]}
-            />
-            <Inputfield
-              title="Event Id"
-              isDisabled
-              valueState={[
-                formData.eventId,
-                (val) => setFormData({ ...formData, eventId: val }),
-              ]}
-            />
-          </Row>
-          <Row>
-            <Inputfield
-              title="Category"
-              valueState={[
-                formData.category,
-                (val) => setFormData({ ...formData, category: val }),
-              ]}
-            />
-            <Inputfield title="One Line Description" />
-          </Row>
-        </div>
-      )}
+    <Layout title={"Accommodation Details"}>
+      <div className="flex flex-row w-full justify-around items-center pb-12">
+        <div className="">Sort by</div>
+        <button className={`px-6 py-2 rounded-full ${college ? "bg-[#3c3c3c] text-white" : "bg-[#eaeaea] text-[#303030]"} border-2 border-[#303030]`}
+          onClick={() => {
+            setCollege(true);
+
+            let temp = accommodation;
+            temp.sort((a, b) => a.college.localeCompare(b.college));
+            setAccommodation(temp);
+          }}
+        >
+          College
+        </button>
+      </div>
+      <p className="text-xs text-right mb-6">*Tap on the number to make a call</p>
+      <div className="space-y-4">
+        {accommodation?.map((acc, index) => (
+          <div>
+            <div className="flex items-center">
+              <div className="text-lg mr-2 w-[5%]">{index + 1}</div>
+              <div className="w-[70%]">
+                {/* <p className="text-xs">{acc.email}</p> */}
+                <p className="">{acc.name}</p>
+                <p className="text-xs">{acc.college}</p>
+              </div>
+              <button className="font-semibold w-[25%] text-right"
+                onClick={() => {
+                  window.open(`tel:${acc.phone}`);
+                }}
+              >
+                {acc.phone}
+              </button>
+            </div>
+            <div className="w-full h-[1px] bg-gray-500 my-2"></div>
+          </div>
+        ))}
+      </div>
     </Layout>
   );
 };

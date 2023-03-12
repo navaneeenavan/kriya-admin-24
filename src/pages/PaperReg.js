@@ -1,106 +1,74 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { fetchEvents } from "../API/calls";
-import Dropdown from "../components/Dropdown";
+import { fetchPaperStats } from "../API/calls";
 import Layout from "../components/Layout";
-import Row from "../components/Row";
-import Inputfield from "../components/TextInput";
+import papers from "./PaperList";
 
 const PaperReg = () => {
-  const [events, setEvents] = useState([]);
-  const [eventChoice, setEventChoice] = useState("");
-
-  const [formData, setFormData] = useState({
-    eventName: "",
-    category: "",
-    one_line_desc: "",
-    description: "",
-    round_title_1: "",
-    round_desc_1: "",
-    round_title_2: "",
-    round_desc_2: "",
-    round_title_3: "",
-    round_desc_3: "",
-    round_title_4: "",
-    round_desc_4: "",
-    eventId: "",
-    contact_name_1: "",
-    contact_mobile_1: "",
-    contact_name_2: "",
-    contact_mobile_2: "",
-    hall: "",
-    eventRules: "",
-    teamSize: "",
-    date: "",
-    timing: "",
-  });
+  const [paperStats, setPaperStats] = useState(null);
+  const [registrations, setRegistrations] = useState(false);
+  const [paperID, setPaperID] = useState(true);
 
   useEffect(() => {
-    toast.promise(fetchEvents(), {
-      loading: "Fetching events",
+    toast.promise(fetchPaperStats(), {
+      loading: "Loading paper statistics...",
       success: (res) => {
-        setEvents(res.data.events);
-        return "Successfully fetched events";
+        setPaperStats(res.data?.paperWiseCount);
+        return "Paper statistics loaded";
       },
       error: (err) => {
         console.log(err);
-        return "Error fetching events";
+        return "Error loading paper statistics";
       },
     });
   }, []);
 
-  useEffect(() => {
-    if (eventChoice.length <= 0) return;
-    setFormData({
-      ...formData,
-      ...events.find((e) => e.eventName === eventChoice),
-    });
-  }, [eventChoice]);
-
   return (
     <Layout title={"Paper Presentation Registrations"}>
-      <Dropdown
-        title="Choose an event to edit"
-        options={events.map((e) => e.eventName)}
-        valueState={[eventChoice, setEventChoice]}
-        placeholder="Select an event"
-      />
-      <div className="w-full my-8 h-1 border-b-2 border-b-gray-200" />
-      {eventChoice.length <= 0 ? (
-        <div className="w-full font-semibold text-5xl text-gray-300 p-16 flex items-center justify-center">
-          Select an event to edit
-        </div>
-      ) : (
-        <div className="w-full h-fit space-y-6">
-          <Row>
-            <Inputfield
-              title="Event Name"
-              valueState={[
-                formData.eventName,
-                (val) => setFormData({ ...formData, eventName: val }),
-              ]}
-            />
-            <Inputfield
-              title="Event Id"
-              isDisabled
-              valueState={[
-                formData.eventId,
-                (val) => setFormData({ ...formData, eventId: val }),
-              ]}
-            />
-          </Row>
-          <Row>
-            <Inputfield
-              title="Category"
-              valueState={[
-                formData.category,
-                (val) => setFormData({ ...formData, category: val }),
-              ]}
-            />
-            <Inputfield title="One Line Description" />
-          </Row>
-        </div>
-      )}
+      <div className="flex flex-row w-full justify-around items-center pb-12">
+        <div className="">Sort by</div>
+        <button className={`px-6 py-2 rounded-full ${paperID ? "bg-[#3c3c3c] text-white" : "bg-[#eaeaea] text-[#303030]"} border-2 border-[#303030]`}
+          onClick={() => {
+            setPaperID(true);
+            setRegistrations(false);
+
+            let temp = paperStats;
+            temp.sort((a, b) => a._id.localeCompare(b._id));
+            setPaperStats(temp);
+          }}
+        >
+          Paper ID
+        </button>
+        <button className={`px-6 py-2 rounded-full ${registrations ? "bg-[#3c3c3c] text-white" : "bg-[#eaeaea] text-[#303030]"} border-2 border-[#303030]`}
+          onClick={() => {
+            setPaperID(false);
+            setRegistrations(true);
+
+            let temp = paperStats;
+            temp.sort((a, b) => b.count - a.count);
+            setPaperStats(temp);
+          }}
+        >
+          Registrations
+        </button>
+      </div>
+      <div className="space-y-4">
+        {paperStats?.map((p, index) => {
+          return (
+            <div>
+              <div className="flex items-center">
+                <div className="text-xl mr-2 w-[5%]">{index + 1}</div>
+                <div className="w-3/4">
+                  <p className="text-xs">{p._id}</p>
+                  <p className="">{papers.find((paper) => p._id === paper.ppid).paperName}</p>
+                </div>
+                <div className="text-4xl font-semibold">{p.count}</div>
+              </div>
+              <div className="w-[90%] h-[1px] bg-gray-500 my-2"></div>
+            </div>
+          );
+        })}
+      </div>
     </Layout>
   );
 };

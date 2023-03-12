@@ -3,8 +3,6 @@ import Layout from "../components/Layout";
 import { fetchStatistics } from "../API/calls";
 import { toast } from "react-hot-toast";
 import Row from "../components/Row";
-import workshops from "./WorkshopList";
-import events from "./EventList";
 
 const Statistics = () => {
   const [stats, setStats] = useState(null);
@@ -24,45 +22,43 @@ const Statistics = () => {
   }, []);
 
   return (
-    <Layout title={"Statistics"}>
+    <Layout title={"Statistics"} className="space-y-8">
       <Row>
-        <div className="w-1/2">
+        <div className="w-1/2 space-y-2">
           <h1 className="text-lg">Total Users</h1>
           <p className="text-5xl font-semibold">{stats?.userCount}</p>
         </div>
-        <div className="w-1/2">
+        <div className="w-1/2 space-y-2">
           <h1 className="text-lg">Paid Users</h1>
           <p className="text-5xl font-semibold">{stats?.paidUserCount}</p>
         </div>
       </Row>
-      <h1 className="text-lg my-8">Workshop Count</h1>
-      <div className="grid grid-cols-2 gap-4 gap-x-8">
-        {stats?.workshopWiseCount?.map((w) => (
-          <div className="flex justify-between items-center">
-            <div className="">
-              <p className="text-sm">{w._id}</p>
-              <p className="text-lg">
-                {workshops.find((work) => w._id === work.wid).workName}
-              </p>
-            </div>
-            <div className="text-5xl font-semibold ">{w.count}</div>
-          </div>
-        ))}
-      </div>
-      <h1 className="text-lg my-8">Event Count</h1>
-      <div className="grid grid-cols-2 gap-4 gap-x-8">
-        {stats?.eventWiseCount?.map((e) => (
-          <div className="flex justify-between items-center">
-            <div className="">
-              <p className="text-sm">{e._id}</p>
-              <p className="text-lg">
-                {events.find((work) => e._id === work.eventId).eventName}
-              </p>
-            </div>
-            <div className="text-5xl font-semibold ">{e.count}</div>
-          </div>
-        ))}
-      </div>
+      <Row>
+        <div className="w-1/2 space-y-2">
+          <h1 className="text-lg">Total Events Registrations</h1>
+          <p className="text-5xl font-semibold">{stats?.totalEventCount}</p>
+        </div>
+        <div className="w-1/2 space-y-2">
+          <h1 className="text-lg">Total Workshops Registrations</h1>
+          <p className="text-5xl font-semibold">{stats?.totalWorkshopCount}</p>
+        </div>
+      </Row>
+      <Row>
+        <div className="w-1/2 space-y-2">
+          <h1 className="text-lg">Total Paper Registrations</h1>
+          <p className="text-5xl font-semibold">{stats?.totalPaperCount}</p>
+        </div>
+        <div className="w-1/2 space-y-2">
+          <h1 className="text-lg">Accommodation Count</h1>
+          <p className="text-5xl font-semibold">{stats?.accommodationCount}</p>
+        </div>
+      </Row>
+      <Row>
+        <div className="w-1/2 space-y-2">
+          <h1 className="text-lg">Total Referrals</h1>
+          <p className="text-5xl font-semibold">{stats?.referralCount}</p>
+        </div>
+      </Row>
     </Layout>
   );
 };
