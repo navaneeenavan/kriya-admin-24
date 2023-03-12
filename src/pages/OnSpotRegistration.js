@@ -27,7 +27,7 @@ const OnSpotRegistration = () => {
   const PSG_COLLEGE = `PSG College of Technology (Autonomous), Peelamedu, Coimbatore District 641004`;
 
   return (
-    <Layout className={"space-y-4"} title={"Register On Spot"}>
+    <Layout className={"space-y-4 px-4 lg:px-0"} title={"Register On Spot"}>
       <Row>
         <Inputfield
           title="Name"

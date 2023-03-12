@@ -22,45 +22,25 @@ const Statistics = () => {
   }, []);
 
   return (
-    <Layout title={"Statistics"} className="space-y-8">
-      <Row>
-        <div className="w-1/2 space-y-2">
-          <h1 className="text-lg">Total Users</h1>
-          <p className="text-5xl font-semibold">{stats?.userCount}</p>
-        </div>
-        <div className="w-1/2 space-y-2">
-          <h1 className="text-lg">Paid Users</h1>
-          <p className="text-5xl font-semibold">{stats?.paidUserCount}</p>
-        </div>
-      </Row>
-      <Row>
-        <div className="w-1/2 space-y-2">
-          <h1 className="text-lg">Total Events Registrations</h1>
-          <p className="text-5xl font-semibold">{stats?.totalEventCount}</p>
-        </div>
-        <div className="w-1/2 space-y-2">
-          <h1 className="text-lg">Total Workshops Registrations</h1>
-          <p className="text-5xl font-semibold">{stats?.totalWorkshopCount}</p>
-        </div>
-      </Row>
-      <Row>
-        <div className="w-1/2 space-y-2">
-          <h1 className="text-lg">Total Paper Registrations</h1>
-          <p className="text-5xl font-semibold">{stats?.totalPaperCount}</p>
-        </div>
-        <div className="w-1/2 space-y-2">
-          <h1 className="text-lg">Accommodation Count</h1>
-          <p className="text-5xl font-semibold">{stats?.accommodationCount}</p>
-        </div>
-      </Row>
-      <Row>
-        <div className="w-1/2 space-y-2">
-          <h1 className="text-lg">Total Referrals</h1>
-          <p className="text-5xl font-semibold">{stats?.referralCount}</p>
-        </div>
-      </Row>
+    <Layout title={"Statistics"} className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 justify-center">
+      <Component title="Total Users" value={stats?.userCount} />
+      <Component title="Paid Users" value={stats?.paidUserCount} />
+      <Component title="Total Events Registrations" value={stats?.totalEventCount} />
+      <Component title="Total Workshops Registrations" value={stats?.totalWorkshopCount} />
+      <Component title="Total Paper Registrations" value={stats?.totalPaperCount} />
+      <Component title="Accommodation Count" value={stats?.accommodationCount} />
+      <Component title="Total Referrals" value={stats?.referralCount} />
     </Layout>
   );
 };
+
+const Component = ({ title, value }) => {
+  return (
+    <div className="w-full lg:w-1/2 text-center lg:text-left space-y-2">
+      <h1 className="text-lg">{title}</h1>
+      <p className="text-5xl font-semibold">{value}</p>
+    </div>
+  )
+}
 
 export default Statistics;

@@ -1,32 +1,31 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { BsCalendarEventFill } from "react-icons/bs";
 import NavRoutes from "../Navroutes";
 
 const PortalWrapper = () => {
   return (
-    <section className="w-screen h-screen overflow-hidden flex font-poppins">
-      <div className="w-1/2 h-screen bg-teal-100  lg:px-[calc(100vw/24)] py-8 shadow-xl relative z-10">
+    <section className="w-screen lg:h-screen overflow-y-auto flex font-poppins">
+      <div className="hidden lg:block lg:w-1/2 bg-teal-100 px-[calc(100vw/12)] lg:px-[calc(100vw/24)] py-8 shadow-xl relative z-10">
         <div className="flex justify-between items-center">
           <div
-            className="w-36 h-36 aspect-square"
+            className="w-24 lg:w-36 h-24 lg:h-36 aspect-square"
             style={{
               background: "url(/assets/Kriya_KLA_Logo_Final.png)",
               backgroundPosition: "center",
               backgroundSize: "cover",
             }}
           ></div>
-          <h1 className="text-3xl font-semibold text-teal-500 w-[40%] text-right">
+          <h1 className="text-2xl lg:text-3xl font-semibold text-teal-500 w-[40%] text-right">
             Admin Dashboard
           </h1>
         </div>
-        <div className="flex flex-wrap gap-6 mt-12">
+        <div className="flex flex-wrap gap-6 mt-12 justify-center">
           {NavRoutes.map((nav) => (
             <NavItem title={nav.title} icon={nav.icon} href={nav.href} />
           ))}
         </div>
       </div>
-      <main className="w-1/2 bg-gray-100 h-screen">
+      <main className="w-full lg:w-1/2 bg-gray-100 h-screen">
         <Outlet />
       </main>
     </section>

@@ -26,7 +26,7 @@ const EventReg = () => {
 
   return (
     <Layout title={"Event Registrations"}>
-      <div className="flex flex-row w-full justify-around items-center pb-12">
+      <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 w-full justify-around items-center pb-12">
         <div className="">Sort by</div>
         <button className={`px-6 py-2 rounded-full ${eventID ? "bg-[#3c3c3c] text-white" : "bg-[#eaeaea] text-[#303030]"} border-2 border-[#303030]`}
           onClick={() => {
@@ -68,21 +68,20 @@ const EventReg = () => {
           Category
         </button>
       </div>
-      <div className="space-y-4">
+      <div className="space-y-4 px-4 lg:px-0">
         {eventStats?.map((e, index) => (
           <div>
             <div className="flex flex-row items-center">
               <div className="text-xl w-[10%]">{index + 1}</div>
-              <p className="w-[30%]">{events.find((ev) => e._id === ev.eventId).category}</p>
-              <div className="w-[50%]">
-                <p className="text-xs">{e._id}</p>
+              <div className="w-[65%]">
+                <p className="text-xs">{e._id} - {events.find((ev) => e._id === ev.eventId).category}</p>
                 <p className="">
                   {events.find((ev) => e._id === ev.eventId).eventName}
                 </p>
               </div>
-              <div className="text-4xl font-semibold w-[10%]">{e.count}</div>
+              <div className="text-3xl lg:text-4xl text-right font-semibold w-[20%] lg:w-[10%]">{e.count}</div>
             </div>
-            <div className="w-full h-[1px] bg-gray-500 my-2"></div>
+            <div className="w-full lg:w-[90%] h-[1px] bg-gray-500 my-2"></div>
           </div>
         ))}
       </div>
