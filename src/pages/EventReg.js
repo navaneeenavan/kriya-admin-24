@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { fetchEventStats } from "../API/calls";
 import Layout from "../components/Layout";
 import events from "./EventList";
@@ -9,6 +10,7 @@ const EventReg = () => {
   const [eventID, setEventID] = useState(true);
   const [registrations, setRegistrations] = useState(false);
   const [category, setCategory] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     toast.promise(fetchEventStats(), {
@@ -85,12 +87,16 @@ const EventReg = () => {
           <div>
             <div className="flex flex-row items-center">
               <div className="text-xl mr-6 lg:mr-4 w-[5%]">{index + 1}</div>
-              <div className="w-1/2">
+              <button className="w-1/2 flex flex-col text-left"
+                onClick={() => {
+                  navigate(`/event-details/${e._id}`);
+                }}
+              >
                 <p className="text-xs">{e._id} - {events.find((ev) => e._id === ev.eventId).category}</p>
                 <p className="">
                   {events.find((ev) => e._id === ev.eventId).eventName}
                 </p>
-              </div>
+              </button>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{e.count}</div>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{e.psgCount}</div>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{e.count - e.psgCount}</div>
