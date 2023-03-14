@@ -1,17 +1,27 @@
 import React, { useEffect } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { BiLogOutCircle } from "react-icons/bi";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import NavRoutes from "../Navroutes";
 
 const PortalWrapper = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.getItem("token") !== "dharmanaprodhan" && window.location.replace("/login");
+  }, []);
+
+  window.onbeforeunload = function () {
+    localStorage.clear();
+  }
 
   useEffect(() => {
     console.log(location);
   }, [location]);
 
   return (
-    <section className="w-screen lg:h-screen overflow-y-auto flex font-poppins">
-      <div className={`${location.pathname === "/" ? "w-full" : "hidden lg:block"} lg:w-1/2 bg-teal-100 px-[calc(100vw/12)] lg:px-[calc(100vw/24)] py-8 shadow-xl relative z-10`}>
+    <section className="w-screen lg:h-screen flex font-poppins">
+      <div className={`${location.pathname === "/" ? "w-full" : "hidden lg:block"} lg:w-1/2 overflow-y-scroll bg-teal-100 px-[calc(100vw/12)] lg:px-[calc(100vw/24)] py-8 shadow-xl relative z-10`}>
         <div className="flex justify-between items-center">
           <div
             className="w-24 lg:w-36 h-24 lg:h-36 aspect-square"
@@ -21,9 +31,20 @@ const PortalWrapper = () => {
               backgroundSize: "cover",
             }}
           ></div>
-          <h1 className="text-2xl lg:text-3xl font-semibold text-teal-500 w-[40%] text-right">
-            Admin Dashboard
-          </h1>
+          <div className="w-[40%] text-right">
+            <h1 className="text-2xl lg:text-3xl font-semibold text-teal-500">
+              Admin Dashboard
+            </h1>
+            <button
+              className="pt-2 text-lg lg:text-xl font-semibold text-gray-600 flex flex-row items-center gap-x-2 justify-end w-full"
+              onClick={() => {
+                localStorage.clear();
+                navigate("/login");
+              }}
+            >
+              <BiLogOutCircle /> Logout
+            </button>
+          </div>
         </div>
         <div className="flex flex-wrap gap-6 mt-12 mb-12 lg:mb-0 justify-center">
           {NavRoutes.map((nav) => (

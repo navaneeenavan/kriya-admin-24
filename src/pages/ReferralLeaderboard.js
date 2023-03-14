@@ -42,7 +42,7 @@ const ReferralLeaderboard = () => {
                 <div className="text-xl mr-6 lg:mr-4 w-[5%]">{index + 1}</div>
                 <div className="w-3/4">
                   <p className="text-xs">{r._id}</p>
-                  <p className="">{referralList.find((rr) => r._id === rr.code).name}</p>
+                  <p className="">{referralList.find((rr) => r._id === rr.code)?.name}</p>
                 </div>
                 <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{r.count}</div>
                 <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{r.paidCount}</div>
