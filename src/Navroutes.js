@@ -5,6 +5,7 @@ import { IoTrophyOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BiHome } from "react-icons/bi";
 import { BsBuildings } from "react-icons/bs";
+import {GrGraphQl} from "react-icons/gr";
 import EditWebsite from "./pages/EditWebsite";
 import EventReg from "./pages/EventReg";
 import PaperReg from "./pages/PaperReg";
@@ -14,6 +15,7 @@ import Accommodation from "./pages/Accommodation";
 import OnSpotRegistration from "./pages/OnSpotRegistration";
 import Statistics from "./pages/Statistics";
 import CollegeUsers from "./pages/CollegeUsers";
+import Graph from "./pages/Graph";
 
 const NavRoutes = [
   {
@@ -70,6 +72,12 @@ const NavRoutes = [
     href: "/accommodation",
     element: <Accommodation />,
   },
+  {
+    title: "Graphs",
+    icon: <GrGraphQl/>,
+    href: "/graphs",
+    element: <Graph />,
+  }
 ];
 
 export default NavRoutes;
