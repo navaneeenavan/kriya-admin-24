@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { fetchWorkshopStats } from "../API/calls";
 import Layout from "../components/Layout";
 import workshops from "./WorkshopList";
@@ -8,6 +9,7 @@ const WorkshopReg = () => {
   const [workStats, setWorkStats] = useState(null);
   const [registrations, setRegistrations] = useState(false);
   const [workID, setWorkID] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     toast.promise(fetchWorkshopStats(), {
@@ -69,12 +71,16 @@ const WorkshopReg = () => {
           <div>
             <div className="flex items-center">
               <div className="text-xl mr-6 lg:mr-4 w-[5%]">{index + 1}</div>
-              <div className="w-1/2">
+              <button className="w-1/2 flex flex-col text-left"
+                  onClick={() => {
+                    navigate(`/work-details/${w._id}`);
+                  }}
+                >
                 <p className="text-xs">{w._id}</p>
                 <p className="">
                   {workshops.find((work) => w._id === work.wid).workName}
                 </p>
-              </div>
+              </button>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.count}</div>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.psgCount}</div>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.count - w.psgCount}</div>

@@ -14,6 +14,10 @@ export const fetchEventStats = () => axios.get(`${BASE_URL}/statistics/event-sta
 export const fetchWorkshopStats = () => axios.get(`${BASE_URL}/statistics/workshop-stats`, {});
 export const fetchPaperStats = () => axios.get(`${BASE_URL}/statistics/paper-stats`, {});
 
+export const fetchEventDetails = (id) => axios.get(`${BASE_URL}/register/users-from-event/${id}`, {});
+export const fetchPaperDetails = (id) => axios.get(`${BASE_URL}/paper/users-from-paper/${id}`, {});
+export const fetchWorkDetails = (id) => axios.get(`${BASE_URL}/payment/workshop-payment-details/${id}`, {});
+
 export const fetchReferralStats = () => axios.get(`${BASE_URL}/statistics/referral-stats`, {});
 
 export const fetchAccommodationDetails = () => axios.get(`${BASE_URL}/statistics/accommodation-details`, {});
