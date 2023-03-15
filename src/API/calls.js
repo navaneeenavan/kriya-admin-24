@@ -4,6 +4,8 @@ export const BASE_URL = "https://kriyadb.psgtech.ac.in/api";
 
 export const EVENT_URL = `${BASE_URL}/event`;
 
+export const MAIL_URL = `${BASE_URL}/mail`;
+
 export const fetchEvents = () => axios.get(EVENT_URL, {});
 
 export const fetchStatistics = () => axios.get(`${BASE_URL}/statistics`, {});
@@ -36,3 +38,13 @@ export const fetchPaperUsers = (id) =>
 
 export const fetchGraphData = (hr) =>
   axios.get(`${BASE_URL}/statistics/graph-stats/${hr}`, {});
+
+export const fetchMailData = (type, id) =>
+  type === "TRANSACTION"
+    ? axios.get(`${MAIL_URL}/txn/${id}`, {})
+    : axios.get(`${MAIL_URL}/kriya/${id}`, {});
+
+export const fetchSendMail = (type, id) =>
+  type === "TRANSACTION"
+    ? axios.post(`${MAIL_URL}/txn/${id}`, {})
+    : axios.post(`${MAIL_URL}/kriya/${id}`, {});
