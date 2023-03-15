@@ -66,7 +66,7 @@ const SendMail = () => {
       {data && (
         <div className="bg-white rounded-md p-4">
           <h1 className="text-xl font-bold">Mail Data</h1>
-          {JSON.stringify(data)}
+          <pre>{JSON.stringify(data, null, 2)}</pre>
         </div>
       )}
     </Layout>
