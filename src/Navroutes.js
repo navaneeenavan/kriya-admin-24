@@ -1,10 +1,15 @@
 import { FiUserPlus } from "react-icons/fi";
-import { HiOutlineSpeakerphone, HiOutlinePresentationChartBar } from "react-icons/hi";
+import {
+  HiOutlineSpeakerphone,
+  HiOutlinePresentationChartBar,
+} from "react-icons/hi";
 import { TfiStatsUp } from "react-icons/tfi";
 import { IoTrophyOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BiHome } from "react-icons/bi";
 import { BsBuildings } from "react-icons/bs";
+import { GrGraphQl } from "react-icons/gr";
+import { GoMail } from "react-icons/go";
 import EditWebsite from "./pages/EditWebsite";
 import EventReg from "./pages/EventReg";
 import PaperReg from "./pages/PaperReg";
@@ -14,6 +19,8 @@ import Accommodation from "./pages/Accommodation";
 import OnSpotRegistration from "./pages/OnSpotRegistration";
 import Statistics from "./pages/Statistics";
 import CollegeUsers from "./pages/CollegeUsers";
+import Graph from "./pages/Graph";
+import SendMail from "./pages/SendMail";
 
 const NavRoutes = [
   {
@@ -69,6 +76,18 @@ const NavRoutes = [
     icon: <BiHome />,
     href: "/accommodation",
     element: <Accommodation />,
+  },
+  {
+    title: "Graphs",
+    icon: <GrGraphQl />,
+    href: "/graphs",
+    element: <Graph />,
+  },
+  {
+    title: "Send Mail",
+    icon: <GoMail />,
+    href: "/send-mail",
+    element: <SendMail />,
   },
 ];
 
