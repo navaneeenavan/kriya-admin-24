@@ -114,6 +114,14 @@ const referralList = [
   {
     "name": "Amitha S",
     "code": "KRI-RHR"
+  },
+  {
+    "name": "Abdullah Fridowsi",
+    "code": "KRI-PYJ"
+  },
+  {
+    "name": "Kavinesh",
+    "code": "KRI-EMY"
   }
 ];
 
