@@ -51,7 +51,7 @@ const WorkDetails = () => {
               <div className="flex items-center">
                 <div className="text-xl mr-6 lg:mr-4 w-[5%]">{index + 1}</div>
                 <div className="w-1/2">
-                  <p className="text-sm font-semibold">{w?.name}</p>
+                  <p className="text-sm font-semibold">{w?.name} <span className="text-xs font-normal">({w?.email})</span></p>
                   <p className="text-xs">{w?.college}</p>
                 </div>
                 <div className="w-1/2 text-right">
