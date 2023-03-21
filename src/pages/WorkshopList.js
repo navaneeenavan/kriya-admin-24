@@ -3,7 +3,7 @@ const workshops = [
     "wid": "WKSP0001",
     "workName": "IoT system design using Embedded C and Python",
     "alteredFee": 600,
-    "maxCount": "50",
+    "maxCount": "60",
   },
   {
     "wid": "WKSP0002",
@@ -27,7 +27,7 @@ const workshops = [
     "wid": "WKSP0005",
     "workName": "Game Development",
     "alteredFee": 500,
-    "maxCount": "70",
+    "maxCount": "71",
   },
   {
     "wid": "WKSP0006",

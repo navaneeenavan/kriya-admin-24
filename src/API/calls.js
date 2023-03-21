@@ -33,6 +33,18 @@ export const fetchReferralStats = () =>
 export const fetchAccommodationDetails = () =>
   axios.get(`${BASE_URL}/statistics/accommodation-details`, {});
 
+export const fetchMasterAccommodation = () =>
+  axios.get(`${BASE_URL}/acc/stats`, {});
+
+export const fetchAccommodationDetailsbyEmail = (email) =>
+  axios.get(`${BASE_URL}/acc/email/${email}`, {});
+
+export const fetchAccommodationDetailsbyKriyaId = (kriyaId) =>
+  axios.get(`${BASE_URL}/acc/kriyaId/${kriyaId}`, {});
+
+export const fetchUpdateAccommodation = (email, data) =>
+  axios.put(`${BASE_URL}/acc/email/${email}`, data);
+
 export const fetchPaperUsers = (id) =>
   axios.get(`${BASE_URL}/paper/users-from-paper/${id}`, {});
 

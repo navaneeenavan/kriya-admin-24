@@ -23,6 +23,9 @@ import CollegeUsers from "./pages/CollegeUsers";
 import Graph from "./pages/Graph";
 import SendMail from "./pages/SendMail";
 import DepartmentWise from "./pages/DepartmentWise";
+import AccommodationDetails from "./pages/AccommodationDetails";
+import AccommodationEdit from "./pages/AccommodationEdit";
+import AccommodationPayment from "./pages/AccommodationPayment";
 
 const NavRoutes = [
   {
@@ -78,6 +81,24 @@ const NavRoutes = [
     icon: <BiHome />,
     href: "/accommodation",
     element: <Accommodation />,
+  },
+  {
+    title: "Accommodation Details",
+    icon: <BiHome />,
+    href: "/accommodation-details",
+    element: <AccommodationDetails />,
+  },
+  {
+    title: "Edit Accommodation",
+    icon: <BiHome />,
+    href: "/accommodation-edit",
+    element: <AccommodationEdit />,
+  },
+  {
+    title: "Accommodation Payment",
+    icon: <BiHome />,
+    href: "/accommodation-payment",
+    element: <AccommodationPayment />,
   },
   {
     title: "Graphs",
