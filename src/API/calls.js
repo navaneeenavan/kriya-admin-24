@@ -48,3 +48,6 @@ export const fetchSendMail = (type, id) =>
   type === "TRANSACTION"
     ? axios.post(`${MAIL_URL}/txn/${id}`, {})
     : axios.post(`${MAIL_URL}/kriya/${id}`, {});
+
+export const fetchDeptWise = () =>
+  axios.get(`${BASE_URL}/statistics/dept-wise`, {});

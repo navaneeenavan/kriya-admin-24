@@ -14,6 +14,7 @@ const WorkDetails = () => {
     toast.promise(fetchWorkDetails(id), {
       loading: "Loading workshop details...",
       success: (res) => {
+        console.log(res.data);
         setWorkDetails(res.data);
         return "Workshop details loaded";
       },

@@ -3,6 +3,7 @@ import {
   HiOutlineSpeakerphone,
   HiOutlinePresentationChartBar,
 } from "react-icons/hi";
+import { HiOutlineBuildingOffice } from "react-icons/hi2";
 import { TfiStatsUp } from "react-icons/tfi";
 import { IoTrophyOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
@@ -21,6 +22,7 @@ import Statistics from "./pages/Statistics";
 import CollegeUsers from "./pages/CollegeUsers";
 import Graph from "./pages/Graph";
 import SendMail from "./pages/SendMail";
+import DepartmentWise from "./pages/DepartmentWise";
 
 const NavRoutes = [
   {
@@ -88,6 +90,12 @@ const NavRoutes = [
     icon: <GoMail />,
     href: "/send-mail",
     element: <SendMail />,
+  },
+  {
+    title: "Department Wise",
+    icon: <HiOutlineBuildingOffice />,
+    href: "/department-wise",
+    element: <DepartmentWise />,
   },
 ];
 
