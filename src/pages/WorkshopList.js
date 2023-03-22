@@ -45,7 +45,7 @@ const workshops = [
     "wid": "WKSP0008",
     "workName": "Nuts and Bots with Naveen",
     "alteredFee": 250,
-    "maxCount": "100",
+    "maxCount": "60",
   },
   {
     "wid": "WKSP0009",
