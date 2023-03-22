@@ -81,10 +81,28 @@ const AccommodationDetails = () => {
           <p className="font-semibold text-2xl w-1/3 flex justify-center">{accommodation?.amenities?.find(i => i.gender === 'Female')?.count}</p>
           <p className="font-semibold text-2xl w-1/3 flex justify-center">{accommodation?.amenities?.find(i => i.gender === 'Male')?.count + accommodation?.amenities?.find(i => i.gender === 'Female')?.count}</p>
         </div>
+        <p className="text-xl font-semibold pt-8">Day Wise Amenities Details - Boys</p>
+        {
+          accommodation?.maleAmenities?.map((item, index) => (
+            <div className="flex flex-row items-center" key={index}>
+              <p className="font-semibold text-sm w-1/2 flex justify-center text-center">{item?.from} - {item?.to}</p>
+              <p className="font-semibold text-2xl w-1/2 flex justify-center text-center">{item?.count}</p>
+            </div>
+          ))
+        }
+        <p className="text-xl font-semibold pt-8">Day Wise Amenities Details - Girls</p>
+        {
+          accommodation?.femaleAmenities?.map((item, index) => (
+            <div className="flex flex-row items-center" key={index}>
+              <p className="font-semibold text-sm w-1/2 flex justify-center text-center">{item?.from} - {item?.to}</p>
+              <p className="font-semibold text-2xl w-1/2 flex justify-center text-center">{item?.count}</p>
+            </div>
+          ))
+        }
       </div>
 
       <p className="text-2xl font-bold mt-16">Room Details</p>
-      <p className="mt-2">Total - {accommodation?.totalRooms}</p>
+      <p className="text-lg font-semibold border-b border-black w-fit mt-2">Total - {accommodation?.totalRooms}</p>
       <p className="text-xl font-semibold mt-2">Boys</p>
       <div className="flex flex-col space-y-4 mt-4">
         <div className="flex flex-row items-center">
