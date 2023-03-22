@@ -57,13 +57,13 @@ const workshops = [
     "wid": "WKSP0010",
     "workName": "Creative Fusion",
     "alteredFee": 400,
-    "maxCount": "65",
+    "maxCount": "66",
   },
   {
     "wid": "WKSP0011",
     "workName": "Non-Destructive Testing",
     "alteredFee": 300,
-    "maxCount": "50",
+    "maxCount": "52",
   },
   {
     "wid": "WKSP0012",
