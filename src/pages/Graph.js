@@ -18,7 +18,7 @@ const Graph = () => {
   const [paidData, setPaidData] = useState(null);
 
   useEffect(() => {
-    toast.promise(fetchGraphData(6), {
+    toast.promise(fetchGraphData(1), {
       loading: "Loading...",
       success: (data) => {
         console.log(data.data);
