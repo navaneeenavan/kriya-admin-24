@@ -11,6 +11,7 @@ import { BiHome } from "react-icons/bi";
 import { BsBuildings } from "react-icons/bs";
 import { GrGraphQl } from "react-icons/gr";
 import { GoMail } from "react-icons/go";
+import { GrCertificate } from "react-icons/gr";
 import EditWebsite from "./pages/EditWebsite";
 import EventReg from "./pages/EventReg";
 import PaperReg from "./pages/PaperReg";
@@ -26,6 +27,7 @@ import DepartmentWise from "./pages/DepartmentWise";
 import AccommodationDetails from "./pages/AccommodationDetails";
 import AccommodationEdit from "./pages/AccommodationEdit";
 import AccommodationPayment from "./pages/AccommodationPayment";
+import CertificateInfo from "./pages/CertificateInfo";
 
 const NavRoutes = [
   {
@@ -117,6 +119,12 @@ const NavRoutes = [
     icon: <HiOutlineBuildingOffice />,
     href: "/department-wise",
     element: <DepartmentWise />,
+  },
+  {
+    title: "Certificate Info",
+    icon: <GrCertificate />,
+    href: "/certificate-info",
+    element: <CertificateInfo />,
   },
 ];
 

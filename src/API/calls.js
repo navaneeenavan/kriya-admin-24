@@ -63,3 +63,6 @@ export const fetchSendMail = (type, id) =>
 
 export const fetchDeptWise = () =>
   axios.get(`${BASE_URL}/statistics/dept-wise`, {});
+
+export const fetchCertificate = (date) =>
+  axios.get(`${BASE_URL}/statistics/certificate/${date}`);
