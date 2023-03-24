@@ -63,7 +63,7 @@ const WorkshopReg = () => {
             setPercentage(true);
 
             let temp = workStats;
-            temp.sort((a, b) => ((b.count)/(workshops.find((work) => b._id === work.wid).maxCount)) - ((a.count)/(workshops.find((work) => a._id === work.wid).maxCount)));
+            temp.sort((a, b) => ((b.count)/(workshops.find((work) => b._id === work.wid)?.maxCount)) - ((a.count)/(workshops.find((work) => a._id === work.wid)?.maxCount)));
             setWorkStats(temp);
           }}
         >
@@ -97,14 +97,14 @@ const WorkshopReg = () => {
                 }}
               >
                 <p className="text-xs">{w._id}</p>
-                <p className="">
-                  {workshops.find((work) => w._id === work.wid).workName}
+                <p className="text-md">
+                  {workshops.find((work) => w._id === work.wid)?.workName}
                 </p>
               </button>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.count}</div>
               <div className="hidden lg:flex flex-row items-end justify-center w-[15%] space-x-1">
-                <div className="text-2xl text-center font-semibold">{workshops.find((work) => w._id === work.wid).maxCount}</div>
-                <div className="text-sm text-center">{(((w.count) / (workshops.find((work) => w._id === work.wid).maxCount)) * 100).toPrecision(3)}%</div>
+                <div className="text-2xl text-center font-semibold">{workshops.find((work) => w._id === work.wid)?.maxCount}</div>
+                <div className="text-sm text-center">{(((w.count) / (workshops.find((work) => w._id === work.wid)?.maxCount)) * 100).toPrecision(3)}%</div>
               </div>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.psgCount}</div>
               <div className="text-3xl lg:text-4xl text-center font-semibold w-[15%]">{w.count - w.psgCount}</div>
