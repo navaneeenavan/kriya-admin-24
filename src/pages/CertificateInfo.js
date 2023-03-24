@@ -19,7 +19,19 @@ const CertificateInfo = () => {
       success: (res) => {
         const _psg = [];
         const _nonPsg = [];
-        res.data.forEach((value) => {
+        const data = res.data;
+
+        data.sort((a, b) => {
+          if (a.kriyaId < b.kriyaId) {
+            return -1;
+          }
+          if (a.kriyaId > b.kriyaId) {
+            return 1;
+          }
+          return 0;
+        });
+
+        data.forEach((value) => {
           if (value.college === PSG_COLLEGE) {
             _psg.push(value);
           } else {
